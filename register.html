@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Portal - Registration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+  .registration-container {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #004080;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+  button {
+    width: 100%;
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #003060;
+  }
+  .message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  .message.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+  }
+  .message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+  }
+</style>
+</head>
+<body>
+  <main class="registration-container" role="main" aria-label="Registration form">
+    <h2>College Portal Registration</h2>
+    <form id="registration-form" novalidate>
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" name="fullName" required placeholder="Your full name" autocomplete="name" />
+
+      <label for="student-id">Student ID</label>
+      <input type="text" id="student-id" name="studentId" required placeholder="Enter student ID" autocomplete="username" pattern="\\d+" title="Student ID must be numeric." />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="user@example.edu" autocomplete="email" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="At least 6 characters" minlength="6" autocomplete="new-password" />
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirmPassword" required placeholder="Re-enter password" minlength="6" autocomplete="new-password" />
+
+      <button type="submit">Register</button>
+      <div id="form-message" role="alert" aria-live="polite"></div>
+    </form>
+  </main>
+
+<script>
+  const form = document.getElementById('registration-form');
+  const messageDiv = document.getElementById('form-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    messageDiv.textContent = '';
+    messageDiv.className = '';
+
+    const fullName = form.fullName.value.trim();
+    const studentId = form.studentId.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    // Validate required fields
+    if (!fullName || !studentId || !email || !password || !confirmPassword) {
+      showMessage('All fields are required.', 'error');
+      return;
+    }
+
+    // Validate student ID is numeric
+    if (!/^\d+$/.test(studentId)) {
+      showMessage('Student ID must contain only numbers.', 'error');
+      return;
+    }
+
+    // Validate email format (HTML5 will handle but double-check)
+    if (!validateEmail(email)) {
+      showMessage('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    // Validate password length
+    if (password.length < 6) {
+      showMessage('Password must be at least 6 characters long.', 'error');
+      return;
+    }
+
+    // Validate password match
+    if (password !== confirmPassword) {
+      showMessage('Passwords do not match.', 'error');
+      return;
+    }
+
+    // If all validations pass
+    showMessage('Registration successful! You can now login.', 'success');
+    form.reset();
+  });
+
+  function showMessage(message, type) {
+    messageDiv.textContent = message;
+    messageDiv.className = 'message ' + type;
+  }
+
+  function validateEmail(email) {
+    // Simple regex email validation
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email.toLowerCase());
+  }
+</script>
+</body>
+</html>

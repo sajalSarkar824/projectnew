@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Canteen Information</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #ccbef6;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #632cc9;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  .canteen-list {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .canteen-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .canteen-card h2 {
+    margin-top: 0;
+    color: #004080;
+  }
+  .canteen-info p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+  }
+  ul.menu-list {
+    margin: 0.3rem 0 1rem 1.2rem;
+  }
+  ul.menu-list li {
+    margin-bottom: 0.25rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Canteen Information</h1>
+</header>
+
+<main class="canteen-list" aria-label="List of canteens">
+  <!-- Canteen items will go here -->
+</main>
+
+<script>
+  // Sample canteen data
+  const canteensData = [
+    {name: "North Canteen", menu: ["Sandwich", "Coffee", "Salad", "Soup"], hours: "8:00 AM - 6:00 PM", contact: "northcanteen@college.edu"},
+    {name: "South Canteen", menu: ["Burger", "Tea", "Fries", "Smoothies"], hours: "9:00 AM - 8:00 PM", contact: "southcanteen@college.edu"},
+    {name: "East Canteen", menu: ["Pizza", "Pasta", "Soft Drinks"], hours: "10:00 AM - 9:00 PM", contact: "eastcanteen@college.edu"}
+  ];
+
+  const mainContainer = document.querySelector('.canteen-list');
+
+  if (canteensData.length === 0) {
+    mainContainer.innerHTML = '<p>No canteen information available at this time.</p>';
+  } else {
+    canteensData.forEach(canteen => {
+      const card = document.createElement('section');
+      card.className = 'canteen-card';
+      card.innerHTML = `
+        <h2>${canteen.name}</h2>
+        <div class="canteen-info">
+          <p><strong>Opening Hours:</strong> ${canteen.hours}</p>
+          <p><strong>Contact:</strong> <a href="mailto:${canteen.contact}">${canteen.contact}</a></p>
+          <p><strong>Menu:</strong></p>
+          <ul class="menu-list">
+            ${canteen.menu.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      mainContainer.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>

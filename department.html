@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Departments</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  .department-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  .department-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem 2rem;
+  }
+  .department-title {
+    color: #004080;
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .department-info p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+  }
+  .department-info strong {
+    font-weight: bold;
+  }
+  @media (max-width: 600px) {
+    .department-container {
+      padding: 0 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>College Departments</h1>
+</header>
+
+<main class="department-container" aria-label="List of college departments">
+  <!-- Department cards will be dynamically inserted here -->
+</main>
+
+<script>
+  const departments = [
+    {
+      name: "Computer Science and Engineering",
+      head: "Dr. Alice Johnson",
+      email: "cse@college.edu",
+      phone: "123-456-7890",
+      description: "The department focuses on cutting-edge computing technologies, software development, and research."
+    },
+    {
+      name: "Mechanical Engineering",
+      head: "Dr. Michael Smith",
+      email: "mech@college.edu",
+      phone: "123-456-7891",
+      description: "Specializes in design, analysis, manufacturing, and maintenance of mechanical systems."
+    },
+    {
+      name: "Business Administration",
+      head: "Ms. Laura White",
+      email: "bus@college.edu",
+      phone: "123-456-7892",
+      description: "Offers programs related to business management, marketing, finance, and entrepreneurship."
+    },
+    {
+      name: "Electrical and Electronics Engineering",
+      head: "Dr. Raj Patel",
+      email: "eee@college.edu",
+      phone: "123-456-7893",
+      description: "Covers power systems, electronics, communication, and control engineering."
+    },
+    {
+      name: "Humanities and Social Sciences",
+      head: "Prof. Maria Garcia",
+      email: "hss@college.edu",
+      phone: "123-456-7894",
+      description: "Focuses on literature, philosophy, history, and social sciences to foster critical thinking and cultural awareness."
+    }
+  ];
+
+  const container = document.querySelector('.department-container');
+
+  departments.forEach(dept => {
+    const card = document.createElement('section');
+    card.className = 'department-card';
+
+    card.innerHTML = `
+      <h2 class="department-title">${dept.name}</h2>
+      <div class="department-info">
+        <p><strong>Head of Department:</strong> ${dept.head}</p>
+        <p><strong>Contact Email:</strong> <a href="mailto:${dept.email}">${dept.email}</a></p>
+        <p><strong>Phone:</strong> ${dept.phone}</p>
+        <p><strong>Description:</strong> ${dept.description}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+
+</body>

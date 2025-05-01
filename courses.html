@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Courses</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #004080;
+    color: white;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  .course-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .course-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+  }
+  .course-item:last-child {
+    border-bottom: none;
+  }
+  .course-code {
+    font-weight: bold;
+    color: #004080;
+    font-size: 1.1rem;
+  }
+  .course-name {
+    font-size: 1.3rem;
+    margin: 0.3rem 0;
+  }
+  .course-details {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.2rem 0;
+  }
+  @media (max-width: 600px) {
+    main {
+      padding: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Courses</h1>
+</header>
+
+<main>
+  <ul class="course-list" id="courseList" aria-label="List of courses offered">
+    <!-- Courses will be dynamically inserted here -->
+  </ul>
+</main>
+
+<script>
+  const courses = [
+    {
+      code: "CS101",
+      name: "Introduction to Computer Science",
+      description: "Basic concepts of computer science including algorithms, programming, and problem-solving.",
+      credits: 4,
+      instructor: "Prof. Alice Johnson"
+    },
+    {
+      code: "MATH201",
+      name: "Calculus II",
+      description: "Advanced calculus topics including integration techniques, sequences, and series.",
+      credits: 3,
+      instructor: "Dr. Michael Smith"
+    },
+    {
+      code: "ENG101",
+      name: "English Composition",
+      description: "Fundamentals of writing, grammar, and communication skills.",
+      credits: 2,
+      instructor: "Ms. Laura White"
+    },
+    {
+      code: "BUS101",
+      name: "Principles of Management",
+      description: "Introduction to management theories, organizational behavior, and leadership.",
+      credits: 3,
+      instructor: "Dr. Raj Patel"
+    },
+    {
+      code: "HIST200",
+      name: "World History",
+      description: "Overview of major events in world history from ancient times to modern era.",
+      credits: 3,
+      instructor: "Prof. Maria Garcia"
+    }
+  ];
+
+  const courseList = document.getElementById('courseList');
+
+  courses.forEach(course => {
+    const li = document.createElement('li');
+    li.className = 'course-item';
+    li.setAttribute('tabindex', '0');
+
+    li.innerHTML = `
+      <div class="course-code">${course.code}</div>
+      <div class="course-name">${course.name}</div>
+      <div class="course-details"><strong>Credits:</strong> ${course.credits}</div>
+      <div class="course-details"><strong>Instructor:</strong> ${course.instructor}</div>
+      <p>${course.description}</p>
+    `;
+
+    courseList.appendChild(li);
+  });
+</script>
+</body>
+</html>

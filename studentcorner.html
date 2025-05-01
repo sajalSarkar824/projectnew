@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Student Corner - Aditiya University</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #004080;
+    color: white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    color: #004080;
+    margin-top: 0;
+    border-bottom: 3px solid #004080;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  .resources, .announcements, .messages {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+  }
+  .link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .link-list a {
+    flex: 1 1 150px;
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .link-list a:hover {
+    background-color: #002f5d;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 1.4rem;
+  }
+  ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  .messages p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  @media (max-width: 600px) {
+    .link-list {
+      flex-direction: column;
+    }
+    .link-list a {
+      flex: 1 1 auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Student Corner</h1>
+</header>
+
+<main>
+  <section class="announcements" aria-label="Latest announcements">
+    <h2>Latest Announcements</h2>
+    <ul>
+      <li>Midterm exams start from 15th August 2024. Please check the exam schedule.</li>
+      <li>Library will be closed on 25th August due to maintenance work.</li>
+      <li>Scholarship application deadline extended till 30th September 2024.</li>
+    </ul>
+  </section>
+
+  <section class="resources" aria-label="Quick access to student resources">
+    <h2>Quick Links</h2>
+    <div class="link-list">
+      <a href="result-page.html" target="_blank" rel="noopener">View Grades</a>
+      <a href="attendance-page.html" target="_blank" rel="noopener">Attendance</a>
+      <a href="libraries.html" target="_blank" rel="noopener">Library</a>
+      <a href="student-counseling.html" target="_blank" rel="noopener">Counseling</a>
+      <a href="placement.html" target="_blank" rel="noopener">Placement</a>
+      <a href="registration.html" target="_blank" rel="noopener">Registration Desk</a>
+      <a href="helpline.html" target="_blank" rel="noopener">Helpline</a>
+      <a href="hostels.html" target="_blank" rel="noopener">Hostels</a>
+      <a href="canteens.html" target="_blank" rel="noopener">Canteens</a>
+    </div>
+  </section>
+
+  <section class="messages" aria-label="Message board">
+    <h2>Student Messages</h2>
+    <p><strong>15 Aug 2024:</strong> Campus Wi-Fi speed upgraded. Accessible across all buildings.</p>
+    <p><strong>10 Aug 2024:</strong> Join the upcoming cultural fest – registrations open now!</p>
+    <p><strong>05 Aug 2024:</strong> New workshops on digital skills starting next week. Check your email for invitations.</p>
+  </section>
+</main>
+
+</body>
+</html>

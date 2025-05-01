@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Health Services - Aditiya University</title>
+<style>
+  body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+    background-color: lab(65.46% 12.95 -11.69);
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+  }
+  header {
+    background-color: #004080;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  }
+  section {
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    color: #004080;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  p {
+    line-height: 1.6;
+  }
+  ul {
+    padding-left: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  input[type="text"], input[type="email"], select, textarea {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #218f31;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+  }
+  textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+  button {
+    margin-top: 1.5rem;
+    background-color: #9c4551;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #002d66;
+  }
+  .message {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border-radius: 6px;
+    display: none;
+  }
+  .message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+  .message.error {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem;
+    }
+    main {
+      padding: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Health Services</h1>
+  <p>Comprehensive healthcare for students at Aditiya University</p>
+</header>
+
+<main>
+  <section aria-label="Health clinic information">
+    <h2>Clinic Hours & Location</h2>
+    <p>The university health clinic is located in Building A - Room 105. Services are available Monday through Friday:</p>
+    <ul>
+      <li>8:00 AM - 12:00 PM</li>
+      <li>1:00 PM - 5:00 PM</li>
+    </ul>
+    <p>For emergencies outside clinic hours, please contact the campus emergency line or visit the nearest hospital.</p>
+  </section>
+
+  <section aria-label="Health services offered">
+    <h2>Services Offered</h2>
+    <ul>
+      <li>General medical consultations and treatment</li>
+      <li>Mental health counseling and support</li>
+      <li>Vaccinations and immunizations</li>
+      <li>Health screenings and wellness programs</li>
+      <li>Referrals to specialized healthcare providers</li>
+    </ul>
+  </section>
+
+  <section aria-label="Appointment request form">
+    <h2>Request an Appointment</h2>
+    <form id="appointmentForm" novalidate>
+      <label for="studentName">Full Name</label>
+      <input type="text" id="studentName" name="studentName" required placeholder="Your full name" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" required placeholder="Your phone number" />
+
+      <label for="serviceType">Service Type</label>
+      <select id="serviceType" name="serviceType" required>
+        <option value="">Select a service</option>
+        <option value="General Consultation">General Consultation</option>
+        <option value="Mental Health Counseling">Mental Health Counseling</option>
+        <option value="Vaccination">Vaccination</option>
+        <option value="Health Screening">Health Screening</option>
+      </select>
+
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" placeholder="Any additional information"></textarea>
+
+      <button type="submit">Submit Request</button>
+      <div id="formMessage" class="message" role="alert" aria-live="polite"></div>
+    </form>
+  </section>
+</main>
+
+<script>
+const form = document.getElementById('appointmentForm');
+const messageDiv = document.getElementById('formMessage');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  messageDiv.style.display = 'none';
+  messageDiv.textContent = '';
+  messageDiv.className = 'message';
+
+  const studentName = form.studentName.value.trim();
+  const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const serviceType = form.serviceType.value;
+
+  if (!studentName || !email || !phone || !serviceType) {
+    messageDiv.textContent = 'Please fill in all required fields.';
+    messageDiv.classList.add('error');
+    messageDiv.style.display = 'block';
+    return;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    messageDiv.textContent = 'Please enter a valid email address.';
+    messageDiv.classList.add('error');
+    messageDiv.style.display = 'block';
+    return;
+  }
+
+  // Simulate successful submission
+  messageDiv.textContent = 'Your appointment request has been received. We will contact you shortly.';
+  messageDiv.classList.add('success');
+  messageDiv.style.display = 'block';
+  form.reset();
+});
+</script>
+
+</body>
+</html>

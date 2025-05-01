@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Attendance Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 0; padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #0066cc;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1, h2 {
+    margin: 0;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  form {
+    margin-bottom: 2rem;
+  }
+  label {
+    display: block;
+    margin: 0.7rem 0 0.3rem;
+    font-weight: bold;
+  }
+  select, input[type="date"], input[type="radio"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  fieldset {
+    margin-top: 1rem;
+    border: none;
+    padding: 0;
+  }
+  fieldset legend {
+    font-weight: bold;
+  }
+  fieldset label {
+    margin-right: 1rem;
+    font-weight: normal;
+  }
+  button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #004a99;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #aaa;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  th {
+    background-color: #dbe9ff;
+  }
+  .present {
+    background-color: #a6dda6;
+  }
+  .absent {
+    background-color: #f5a6a6;
+  }
+  #message {
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Attendance Page</h1>
+</header>
+
+<main>
+  <h2>Mark Attendance</h2>
+  <form id="attendance-form">
+    <label for="course-select">Select Course:</label>
+    <select id="course-select" required></select>
+
+    <label for="date-input">Select Date:</label>
+    <input type="date" id="date-input" max="" required />
+
+    <fieldset>
+      <legend>Attendance Status:</legend>
+      <label><input type="radio" name="attendance-status" value="present" required /> Present</label>
+      <label><input type="radio" name="attendance-status" value="absent" /> Absent</label>
+    </fieldset>
+
+    <button type="submit">Submit Attendance</button>
+  </form>
+
+  <div id="message" aria-live="polite"></div>
+
+  <h2>Your Attendance Records</h2>
+  <div id="attendance-records"></div>
+</main>
+
+<script>
+  // Sample student attendance data and courses
+  const data = {
+    studentId: "1001",
+    studentName: "Alice Johnson",
+    courses: ["CS101", "MATH201", "ENG101"],
+    attendanceRecords: {
+      "CS101": {"2024-06-10": true, "2024-06-11": false},
+      "MATH201": {"2024-06-10": true},
+      "ENG101": {}
+    }
+  };
+
+  const courseSelect = document.getElementById('course-select');
+  const dateInput = document.getElementById('date-input');
+  const attendanceForm = document.getElementById('attendance-form');
+  const attendanceRecordsDiv = document.getElementById('attendance-records');
+  const messageDiv = document.getElementById('message');
+
+  // Set max date input to today's date
+  const todayStr = new Date().toISOString().split('T')[0];
+  dateInput.max = todayStr;
+  dateInput.value = todayStr;
+
+  // Populate courses dropdown
+  function populateCourses() {
+    courseSelect.innerHTML = '';
+    data.courses.forEach(course => {
+      const option = document.createElement('option');
+      option.value = course;
+      option.textContent = course;
+      courseSelect.appendChild(option);
+    });
+  }
+
+  // Render attendance records table
+  function renderAttendanceRecords() {
+    attendanceRecordsDiv.innerHTML = '';
+    if (Object.keys(data.attendanceRecords).length === 0) {
+      attendanceRecordsDiv.textContent = 'No attendance records available.';
+      return;
+    }
+
+    data.courses.forEach(course => {
+      const records = data.attendanceRecords[course] || {};
+      const dates = Object.keys(records).sort();
+
+      if (dates.length === 0) return; // skip courses with no records
+
+      const table = document.createElement('table');
+      const caption = document.createElement('caption');
+      caption.textContent = `Course: ${course}`;
+      table.appendChild(caption);
+
+      const thead = document.createElement('thead');
+      thead.innerHTML = `<tr><th>Date</th><th>Status</th></tr>`;
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      dates.forEach(date => {
+        const tr = document.createElement('tr');
+        const tdDate = document.createElement('td');
+        tdDate.textContent = date;
+        const tdStatus = document.createElement('td');
+        tdStatus.textContent = records[date] ? 'Present' : 'Absent';
+        tdStatus.className = records[date] ? 'present' : 'absent';
+        tr.appendChild(tdDate);
+        tr.appendChild(tdStatus);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+
+      attendanceRecordsDiv.appendChild(table);
+    });
+  }
+
+  // Handle form submission
+  attendanceForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const selectedCourse = courseSelect.value;
+    const selectedDate = dateInput.value;
+    const status = attendanceForm.elements['attendance-status'].value === 'present';
+
+    if (!selectedCourse || !selectedDate) {
+      messageDiv.textContent = "Please select course and date.";
+      messageDiv.style.color = 'red';
+      return;
+    }
+
+    if (!data.attendanceRecords[selectedCourse]) {
+      data.attendanceRecords[selectedCourse] = {};
+    }
+    data.attendanceRecords[selectedCourse][selectedDate] = status;
+
+    messageDiv.textContent = `Attendance for course ${selectedCourse} on ${selectedDate} marked as ${status ? 'Present' : 'Absent'}.`;
+    messageDiv.style.color = status ? 'green' : 'red';
+
+    renderAttendanceRecords();
+  });
+
+  // Initialize page
+  populateCourses();
+  renderAttendanceRecords();
+</script>
+</body>
+</html>

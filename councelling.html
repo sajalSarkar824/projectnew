@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Student Counseling - Aditiya University</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f6f8fa;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #004080;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    color: #004080;
+    margin-top: 0;
+  }
+  p {
+    line-height: 1.5;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  input[type="text"], input[type="email"], textarea {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    resize: vertical;
+  }
+  textarea {
+    min-height: 100px;
+  }
+  button {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #004080;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  button:hover {
+    background-color: #002f66;
+  }
+  .message {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border-radius: 6px;
+    display: none;
+  }
+  .message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+  .message.error {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem;
+    }
+    main {
+      padding: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Student Counseling Services</h1>
+</header>
+
+<main>
+  <section aria-label="Counseling service information">
+    <h2>About Counseling Services</h2>
+    <p>At Aditiya University, we care about your mental health and well-being. Our professional counseling team is here to support students through academic stress, personal challenges, and emotional difficulties. Counseling sessions are confidential and free for all enrolled students.</p>
+  </section>
+
+  <section aria-label="Counseling appointment request form">
+    <h2>Request a Counseling Appointment</h2>
+    <form id="counselingForm" novalidate>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required placeholder="Your full name" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" required placeholder="Your phone number" />
+
+      <label for="reason">Reason for Counseling</label>
+      <textarea id="reason" name="reason" required placeholder="Briefly describe your reason for seeking counseling"></textarea>
+
+      <button type="submit">Submit Request</button>
+      <div id="formMessage" class="message" role="alert" aria-live="polite"></div>
+    </form>
+  </section>
+</main>
+
+<script>
+  const form = document.getElementById('counselingForm');
+  const messageDiv = document.getElementById('formMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    messageDiv.style.display = 'none';
+    messageDiv.textContent = '';
+    messageDiv.className = 'message';
+
+    const fullName = form.fullName.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const reason = form.reason.value.trim();
+
+    if (!fullName || !email || !phone || !reason) {
+      messageDiv.textContent = 'Please fill out all fields.';
+      messageDiv.classList.add('error');
+      messageDiv.style.display = 'block';
+      return;
+    }
+
+    // Simple email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      messageDiv.textContent = 'Please enter a valid email address.';
+      messageDiv.classList.add('error');
+      messageDiv.style.display = 'block';
+      return;
+    }
+
+    // Simulate submission
+    messageDiv.textContent = 'Your request has been submitted successfully. Our counselor will contact you shortly.';
+    messageDiv.classList.add('success');
+    messageDiv.style.display = 'block';
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

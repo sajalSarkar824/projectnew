@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Hostels Information</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #00509e;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  .hostel-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .hostel-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+    flex: 1 1 300px;
+  }
+  .hostel-card h2 {
+    color: #00509e;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  .hostel-info p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+  }
+  .hostel-info strong {
+    color: #003366;
+  }
+  a {
+    color: #00509e;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .hostel-container {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Hostels Information</h1>
+</header>
+
+<main aria-label="List of college hostels" class="hostel-container">
+  <!-- Hostels data will be dynamically loaded here -->
+</main>
+
+<script>
+  const hostelsData = [
+    {
+      name: "Maple Hall",
+      roomsAvailable: 12,
+      contactEmail: "maple@college.edu",
+      phone: "123-456-7890",
+      facilities: ["WiFi", "Laundry Service", "24/7 Security", "Study Rooms"],
+      location: "North Campus, Block A"
+    },
+    {
+      name: "Oak Hall",
+      roomsAvailable: 5,
+      contactEmail: "oak@college.edu",
+      phone: "123-456-7891",
+      facilities: ["WiFi", "Gym", "Common Lounge", "Cafeteria"],
+      location: "South Campus, Block B"
+    },
+    {
+      name: "Pine Hall",
+      roomsAvailable: 0,
+      contactEmail: "pine@college.edu",
+      phone: "123-456-7892",
+      facilities: ["Laundry Service", "Study Rooms", "Recreational Area"],
+      location: "East Campus, Block C"
+    },
+    {
+      name: "Cedar Hall",
+      roomsAvailable: 3,
+      contactEmail: "cedar@college.edu",
+      phone: "123-456-7893",
+      facilities: ["24/7 Security", "Gym", "WiFi"],
+      location: "West Campus, Block D"
+    }
+  ];
+
+  const mainContainer = document.querySelector('.hostel-container');
+
+  if (hostelsData.length === 0) {
+    mainContainer.innerHTML = '<p>No hostels information available at this time.</p>';
+  } else {
+    hostelsData.forEach(hostel => {
+      const card = document.createElement('section');
+      card.className = 'hostel-card';
+
+      card.innerHTML = `
+        <h2>${hostel.name}</h2>
+        <div class="hostel-info">
+          <p><strong>Rooms Available:</strong> ${hostel.roomsAvailable}</p>
+          <p><strong>Location:</strong> ${hostel.location}</p>
+          <p><strong>Facilities:</strong> ${hostel.facilities.join(", ")}</p>
+          <p><strong>Contact Email:</strong> <a href="mailto:${hostel.contactEmail}">${hostel.contactEmail}</a></p>
+          <p><strong>Phone:</strong> ${hostel.phone}</p>
+        </div>
+      `;
+      mainContainer.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>

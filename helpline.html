@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Helpline Services</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  .helpline-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .helpline-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+  }
+  .helpline-item:last-child {
+    border-bottom: none;
+  }
+  .helpline-title {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.2rem;
+  }
+  .helpline-details {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.2rem 0;
+  }
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    main {
+      padding: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Helpline Services</h1>
+</header>
+
+<main>
+  <ul class="helpline-list" id="helplineList" aria-label="List of helpline services">
+    <!-- Helpline services will be dynamically inserted here -->
+  </ul>
+</main>
+
+<script>
+  const helplines = [
+    {
+      title: "Counseling Services",
+      contact: "123-456-7890",
+      email: "counseling@college.edu",
+      description: "Confidential support for mental health and emotional well-being."
+    },
+    {
+      title: "Academic Support",
+      contact: "123-456-7891",
+      email: "academicsupport@college.edu",
+      description: "Assistance with academic challenges, tutoring, and study skills."
+    },
+    {
+      title: "IT Help Desk",
+      contact: "123-456-7892",
+      email: "ithelp@college.edu",
+      description: "Technical support for software and hardware issues."
+    },
+    {
+      title: "Health Services",
+      contact: "123-456-7893",
+      email: "healthservices@college.edu",
+      description: "Medical assistance and health-related inquiries."
+    },
+    {
+      title: "Emergency Services",
+      contact: "911",
+      email: "",
+      description: "For immediate assistance in case of emergencies."
+    }
+  ];
+
+  const helplineList = document.getElementById('helplineList');
+
+  helplines.forEach(helpline => {
+    const li = document.createElement('li');
+    li.className = 'helpline-item';
+    li.setAttribute('tabindex', '0');
+
+    li.innerHTML = `
+      <div class="helpline-title">${helpline.title}</div>
+      <div class="helpline-details"><strong>Contact:</strong> ${helpline.contact}</div>
+      <div class="helpline-details"><strong>Email:</strong> <a href="mailto:${helpline.email}">${helpline.email}</a></div>
+      <p>${helpline.description}</p>
+    `;
+
+    helplineList.appendChild(li);
+  });
+</script>
+</body>
+</html>

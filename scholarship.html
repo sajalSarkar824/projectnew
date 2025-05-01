@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scholarship Opportunities</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    margin-bottom: 0.5rem;
+    color: #004080;
+  }
+  .header-image {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 64, 128, 0.3);
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  }
+  .scholarship-list {
+    list-style: none;
+    padding: 0;
+  }
+  .scholarship-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+  }
+  .scholarship-item:last-child {
+    border-bottom: none;
+  }
+  .scholarship-title {
+    font-size: 1.3rem;
+    color: #004080;
+    margin: 0 0 0.3rem;
+  }
+  .scholarship-details p {
+    margin: 0.2rem 0;
+  }
+  .deadline {
+    font-weight: bold;
+    color: #c0392b;
+  }
+  @media (max-width: 600px) {
+    main {
+      padding: 1rem;
+    }
+    .header-image {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Scholarship Opportunities</h1>
+  <img class="header-image" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Scholarship concept illustration" />
+</header>
+
+<main>
+  <ul class="scholarship-list" aria-label="List of scholarship opportunities">
+    <!-- Scholarship items will be dynamically inserted here -->
+  </ul>
+</main>
+
+<script>
+  const scholarships = [
+    {
+      title: "Merit-Based Scholarship",
+      eligibility: "Students with GPA above 3.7",
+      amount: "$2000 per semester",
+      deadline: "2024-09-30"
+    },
+    {
+      title: "Need-Based Financial Aid",
+      eligibility: "Students with demonstrated financial need",
+      amount: "Varies based on need",
+      deadline: "2024-10-15"
+    },
+    {
+      title: "STEM Excellence Award",
+      eligibility: "Students enrolled in STEM programs with outstanding performance",
+      amount: "$3000 per year",
+      deadline: "2024-11-01"
+    },
+    {
+      title: "Community Service Scholarship",
+      eligibility: "Students with significant volunteer hours",
+      amount: "$1500 per semester",
+      deadline: "2024-12-01"
+    }
+  ];
+
+  function formatDate(dateStr) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(undefined, options);
+  }
+
+  const listContainer = document.querySelector('.scholarship-list');
+
+  scholarships.forEach(scholarship => {
+    const li = document.createElement('li');
+    li.className = 'scholarship-item';
+
+    li.innerHTML = `
+      <h2 class="scholarship-title">${scholarship.title}</h2>
+      <div class="scholarship-details">
+        <p><strong>Eligibility:</strong> ${scholarship.eligibility}</p>
+        <p><strong>Amount:</strong> ${scholarship.amount}</p>
+        <p class="deadline"><strong>Application Deadline:</strong> ${formatDate(scholarship.deadline)}</p>
+      </div>
+    `;
+
+    listContainer.appendChild(li);
+  });
+</script>
+</body>
+</html>

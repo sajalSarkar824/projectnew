@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditiya University - Home</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      left: 0;
+      top: 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #002244;
+    }
+
+    main {
+      flex-grow: 1;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      font-weight: 300;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .overview {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .overview h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      color: #004080;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 1rem 2rem;
+      margin-top: auto;
+      font-size: 0.9rem;
+    }
+
+    .resources{
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      left: 0;
+      /* bottom: 20rem; */
+      top : 4.9rem;
+      padding: 1rem;
+      gap: 1rem;
+      background-color: rgb(40, 153, 205);
+      border-radius: 10px;
+    }
+
+    .resources a{
+      text-decoration: none;
+      color: #fff;
+
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .cards {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo" aria-label="Aditiya University Logo">Aditiya University</div>
+    <nav>
+      <ul role="menubar" aria-label="Primary navigation">
+        <li role="none"><a role="menuitem" href="#">Home</a></li>
+        <li role="none"><a role="menuitem" href="#">About</a></li>
+        <li role="none"><a role="menuitem" href="#">Departments</a></li>
+        <li role="none"><a role="menuitem" href="#">Admissions</a></li>
+        <li role="none"><a role="menuitem" href="#">News</a></li>
+        <li role="none"><a role="menuitem" href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" aria-label="University welcome section">
+      <h1>Welcome to Aditiya University</h1>
+      <p>Empowering future leaders through education, innovation, and research.</p>
+    </section>
+    <section class="overview" aria-label="Overview of university highlights">
+      <h2>Explore Our Campus</h2>
+      <div class="cards">
+        <article class="card" tabindex="0">
+          <h3>Academic Excellence</h3>
+          <p>Our programs are designed to provide comprehensive knowledge across various disciplines with renowned
+            faculty.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Research & Innovation</h3>
+          <p>Engage in cutting-edge research and contribute to breakthroughs that shape the future.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Vibrant Campus Life</h3>
+          <p>Participate in diverse extracurricular activities, student clubs, and cultural events.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Global Opportunities</h3>
+          <p>Join a community that connects you with international collaborations and career prospects.</p>
+        </article>
+        <section class="resources" aria-label="Quick access to student resources">
+          <a href="login.html" target="_blank" rel="noopener">LOGIN</a>
+          <a href="register.html" target="_blank" rel="noopener">REGISTRATION</a>
+          <a href="attendence.html" target="_blank" rel="noopener">ATTENDENCE</a>
+          <a href="libraries.html" target="_blank" rel="noopener">LIBRARY</a>
+          <a href="rules.html" target="_blank" rel="noopener">RULES AND REGULATIONS</a>
+          <a href="faculty.html" target="_blank" rel="noopener">FACULTY</a>
+          <a href="scholarship.html" target="_blank" rel="noopener">SCHOLARSHIP AND SCHEMES</a>
+          <a href="couses.html" target="_blank" rel="noopener">AVAILABLE COURSES</a>
+          <a href="hostels.html" target="_blank" rel="noopener">HOSTELS</a>
+          <a href="canteen.html" target="_blank" rel="noopener">CANTEEN</a>
+          <a href="department.html" target="_blank" rel="noopener">DEPARTMENT</a>
+          <a href="placement.html" target="_blank" rel="noopener">PLACEMENT</a>
+          <a href="holiday.html" target="_blank" rel="noopener">HOLIDAY LIST</a>
+          <a href="helpline.html" target="_blank" rel="noopener">HELPLINE</a>
+          <a href="councelling.html" target="_blank" rel="noopener">COUNCELLING</a>
+          <a href="studentcorner.html" target="_blank" rel="noopener">STUDENT'S CORNER</a>
+          <a href=" campuslife.html" target="_blank" rel="noopener">CAMPUS LIFE</a>
+          <a href="health.html" target="_blank" rel="noopener">HEALTH</a>
+          <a href="result.html" target="_blank" rel="noopener">RESULT</a>
+          <a href="landingpages.html" target="_blank" rel="noopener">LANDING PAGES</a>
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+
+
+
+
+
+
+
+
+
+          
+          </section>
+
+
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Aditiya University. All rights reserved.
+  </footer>
+</body>
+
+</html>

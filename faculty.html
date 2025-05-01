@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faculty - Aditiya University</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  .faculty-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .faculty-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    width: 280px;
+    overflow: hidden;
+    flex-direction: column;
+    text-align: center;
+  }
+  .faculty-photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+  .faculty-info {
+    padding: 1rem 1rem 1.5rem;
+  }
+  .faculty-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #5ce62a;
+    margin: 0.5rem 0 0.25rem 0;
+  }
+  .faculty-designation, .faculty-department {
+    margin: 0.2rem 0;
+    font-size: 1rem;
+  }
+  .faculty-contact a {
+    color: #004080;
+    text-decoration: none;
+    display: block;
+    margin: 0.3rem 0;
+  }
+  .faculty-contact a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .faculty-container {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+    .faculty-card {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Faculty - Aditiya University</h1>
+</header>
+
+<main class="faculty-container" aria-label="List of faculty members">
+  <!-- Faculty cards will be inserted here -->
+</main>
+
+<script>
+  const facultyMembers = [
+    {
+      name: "Dr. Alice Johnson",
+      designation: "Professor",
+      department: "Computer Science and Engineering",
+      email: "alice.johnson@aditiyauniversity.edu",
+      phone: "123-456-7890",
+      photoUrl: "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      name: "Dr. Michael Smith",
+      designation: "Associate Professor",
+      department: "Mechanical Engineering",
+      email: "michael.smith@aditiyauniversity.edu",
+      phone: "123-456-7891",
+      photoUrl: "https://randomuser.me/api/portraits/men/46.jpg"
+    },
+    {
+      name: "Ms. Laura White",
+      designation: "Assistant Professor",
+      department: "Business Administration",
+      email: "laura.white@aditiyauniversity.edu",
+      phone: "123-456-7892",
+      photoUrl: "https://randomuser.me/api/portraits/women/55.jpg"
+    },
+    {
+      name: "Dr. Raj Patel",
+      designation: "Professor",
+      department: "Electrical and Electronics Engineering",
+      email: "raj.patel@aditiyauniversity.edu",
+      phone: "123-456-7893",
+      photoUrl: "https://randomuser.me/api/portraits/men/54.jpg"
+    },
+    {
+      name: "Prof. Maria Garcia",
+      designation: "Professor",
+      department: "Humanities and Social Sciences",
+      email: "maria.garcia@aditiyauniversity.edu",
+      phone: "123-456-7894",
+      photoUrl: "https://randomuser.me/api/portraits/women/68.jpg"
+    }
+  ];
+
+  const container = document.querySelector('.faculty-container');
+
+  facultyMembers.forEach(member => {
+    const card = document.createElement('section');
+    card.className = 'faculty-card';
+
+    card.innerHTML = `
+      <img src="${member.photoUrl}" alt="Photo of ${member.name}" class="faculty-photo" />
+      <div class="faculty-info">
+        <div class="faculty-name">${member.name}</div>
+        <div class="faculty-designation">${member.designation}</div>
+        <div class="faculty-department">${member.department}</div>
+        <div class="faculty-contact">
+          <a href="mailto:${member.email}">${member.email}</a>
+          <a href="tel:${member.phone}">${member.phone}</a>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

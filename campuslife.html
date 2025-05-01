@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campus Life - Aditiya University</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fafc;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  h2 {
+    color: #004080;
+    margin-top: 0;
+    border-bottom: 3px solid #004080;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+  .life-section {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .card {
+    background: white;
+    flex: 1 1 300px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 1rem 1.5rem;
+    flex-grow: 1;
+  }
+  .card-content h3 {
+    margin-bottom: 0.6rem;
+    color: #004080;
+  }
+  .card-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .life-section {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Campus Life</h1>
+  <p>Discover the vibrant community and activities at Aditiya University</p>
+</header>
+
+<main>
+  <section>
+    <h2>Student Clubs & Organizations</h2>
+    <div class="life-section" aria-label="Student Clubs and Organizations">
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80" alt="Students in computer club" />
+        <div class="card-content">
+          <h3>Tech & Robotics Club</h3>
+          <p>Join fellow tech enthusiasts to explore robotics, coding, and innovation through workshops and projects.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Students participating in drama club" />
+        <div class="card-content">
+          <h3>Drama & Arts Society</h3>
+          <p>Unleash your creativity with theatrical productions, art exhibitions, and cultural events.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=800&q=80" alt="Students volunteering" />
+        <div class="card-content">
+          <h3>Community Service Club</h3>
+          <p>Make a difference through volunteering, social work, and outreach programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sports & Recreation</h2>
+    <div class="life-section" aria-label="Sports and Recreation Facilities">
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80" alt="Basketball court" />
+        <div class="card-content">
+          <h3>Sports Complex</h3>
+          <p>State-of-the-art facilities including basketball courts, swimming pool, gymnasium and athletics tracks.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1541592106381-c890d2e2fa1f?auto=format&fit=crop&w=800&q=80" alt="Yoga class" />
+        <div class="card-content">
+          <h3>Wellness & Yoga Studio</h3>
+          <p>Join yoga and meditation sessions to boost your mental and physical well-being.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Campus Facilities</h2>
+    <div class="life-section" aria-label="Campus Facilities">
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1541592106381-c890d2e2fa1f?auto=format&fit=crop&w=800&q=80" alt="Yoga class" />
+        <div class="card-content">
+          <h3>Library & Research Center</h3>
+          <p>Access thousands of books, journals, and digital resources in a quiet and modern environment.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Student cafeteria" />
+        <div class="card-content">
+          <h3>Cafeteria & Food Courts</h3>
+          <p>Enjoy diverse cuisines and healthy food options at various cafes and food courts across campus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

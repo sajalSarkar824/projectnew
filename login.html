@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aditiya University - Login</title>
+<style>
+  /* Basic Reset */
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+  }
+  body {
+    background: url('https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    background-color: rgba(0, 0, 51, 0.75);
+    padding: 3rem 2.5rem;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    text-align: center;
+  }
+  .college-name {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #a0c4ff;
+  }
+  input[type="text"], input[type="password"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 8px 2px #90cdf4;
+  }
+  button {
+    background-color: #004080;
+    padding: 0.9rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+  }
+  button:hover {
+    background-color: #002858;
+  }
+  .error-message {
+    background-color: #f56565;
+    color: white;
+    padding: 0.7rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: none;
+  }
+  @media (max-width: 400px) {
+    .login-container {
+      width: 90%;
+      padding: 2rem;
+    }
+    .college-name {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="login-container" role="main" aria-label="Aditiya University Login">
+    <div class="college-name" aria-label="College name">Aditiya University</div>
+    <form id="loginForm" novalidate>
+      <label for="studentId">Student ID</label>
+      <input type="text" id="studentId" name="studentId" placeholder="Enter Student ID" autocomplete="username" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter Password" autocomplete="current-password" required />
+      <button type="submit">Login</button>
+      <div id="errorMessage" class="error-message" role="alert"></div>
+    </form>
+  </div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const errorMessage = document.getElementById('errorMessage');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorMessage.style.display = 'none';
+    errorMessage.textContent = '';
+
+    const studentId = form.studentId.value.trim();
+    const password = form.password.value.trim();
+
+    if (!studentId || !password) {
+      errorMessage.textContent = 'Please enter both Student ID and Password.';
+      errorMessage.style.display = 'block';
+      return;
+    }
+
+    // Example validation (dummy)
+    if (studentId === '12345' && password === 'password') {
+      alert(`Welcome, Student ${studentId}!`);
+      // Redirect or further logic here
+    } else {
+      errorMessage.textContent = 'Invalid Student ID or Password.';
+      errorMessage.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>

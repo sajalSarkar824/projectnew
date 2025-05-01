@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exam Results - Aditiya University</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 2rem;
+    color: #4dd931;
+  }
+  header {
+    background-color: #008046;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  }
+  form {
+    margin-bottom: 1.5rem;
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+  }
+  button {
+    margin-top: 1rem;
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  button:hover {
+    background-color: #002f66;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  th, td {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  th {
+    background-color: #dce6f7;
+  }
+  #message {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Exam Results</h1>
+</header>
+
+<main>
+  <form id="resultForm" aria-label="Student ID input form">
+    <label for="studentId">Enter Student ID:</label>
+    <input type="text" id="studentId" name="studentId" required placeholder="e.g., 1001" />
+    <button type="submit">View Results</button>
+  </form>
+
+  <div id="message" role="alert" aria-live="assertive"></div>
+
+  <table id="resultTable" aria-label="Student exam results" style="display:none;">
+    <thead>
+      <tr>
+        <th>Course Code</th>
+        <th>Course Name</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Results rows inserted here -->
+    </tbody>
+  </table>
+</main>
+
+<script>
+  const studentsResults = {
+    '1001': [
+      { courseCode: 'CS101', courseName: 'Introduction to Computer Science', grade: 'A' },
+      { courseCode: 'MATH201', courseName: 'Calculus II', grade: 'B+' },
+      { courseCode: 'ENG101', courseName: 'English Composition', grade: 'A-' }
+    ],
+    '1002': [
+      { courseCode: 'BUS101', courseName: 'Principles of Management', grade: 'B' },
+      { courseCode: 'HIST200', courseName: 'World History', grade: 'B+' },
+      { courseCode: 'ENG101', courseName: 'English Composition', grade: 'A' }
+    ]
+  };
+
+  const form = document.getElementById('resultForm');
+  const messageDiv = document.getElementById('message');
+  const resultTable = document.getElementById('resultTable');
+  const resultTbody = resultTable.querySelector('tbody');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    messageDiv.textContent = '';
+    resultTable.style.display = 'none';
+    resultTbody.innerHTML = '';
+
+    const studentId = this.studentId.value.trim();
+
+    if (!studentId) {
+      messageDiv.textContent = 'Please enter a Student ID.';
+      return;
+    }
+
+    const results = studentsResults[studentId];
+
+    if (!results) {
+      messageDiv.textContent = 'No results found for Student ID: ' + studentId;
+      return;
+    }
+
+    results.forEach(record => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${record.courseCode}</td>
+        <td>${record.courseName}</td>
+        <td>${record.grade}</td>
+      `;
+      resultTbody.appendChild(tr);
+    });
+
+    resultTable.style.display = 'table';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Holiday List 2025</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f7fafc;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #2c7be5;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem 2rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  th {
+    background-color: #d0e1fd;
+  }
+  caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
+  @media (max-width: 600px) {
+    body, main {
+      padding: 1rem;
+    }
+    table, th, td {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Holiday List 2025</h1>
+</header>
+
+<main role="main" aria-label="List of holidays in the year 2025">
+  <table aria-describedby="holidayDesc">
+    <caption id="holidayDesc">Official list of college holidays for the year 2025</caption>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Holiday</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody id="holidayTableBody">
+      <!-- Holiday rows inserted by JavaScript -->
+    </tbody>
+  </table>
+</main>
+
+<script>
+  const holidays2025 = [
+    { date: '2025-01-01', name: "New Year's Day", description: "The first day of the year celebrated worldwide." },
+    { date: '2025-01-26', name: "Republic Day", description: "Marks the date on which the Constitution of India came into effect." },
+    { date: '2025-03-29', name: "Holi", description: "Festival of colors celebrated in India." },
+    { date: '2025-04-14', name: "Good Friday", description: "Christian holiday commemorating the crucifixion of Jesus Christ." },
+    { date: '2025-05-01', name: "Labour Day", description: "International Workers' Day." },
+    { date: '2025-08-15', name: "Independence Day", description: "National holiday celebrating India's independence." },
+    { date: '2025-10-02', name: "Gandhi Jayanti", description: "Birth anniversary of Mahatma Gandhi." },
+    { date: '2025-11-01', name: "All Saints' Day", description: "Christian festival honoring saints." },
+    { date: '2025-12-25', name: "Christmas Day", description: "Celebration of the birth of Jesus Christ." }
+  ];
+
+  const tbody = document.getElementById('holidayTableBody');
+
+  holidays2025.forEach(holiday => {
+    const tr = document.createElement('tr');
+
+    const tdDate = document.createElement('td');
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    tdDate.textContent = new Date(holiday.date).toLocaleDateString(undefined, options);
+    tr.appendChild(tdDate);
+
+    const tdName = document.createElement('td');
+    tdName.textContent = holiday.name;
+    tr.appendChild(tdName);
+
+    const tdDesc = document.createElement('td');
+    tdDesc.textContent = holiday.description;
+    tr.appendChild(tdDesc);
+
+    tbody.appendChild(tr);
+  });
+</script>
+</body>
+</html>

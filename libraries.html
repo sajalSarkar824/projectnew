@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>College Libraries Information</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+  }
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 0;
+  }
+  .library-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .library-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+    flex: 1 1 300px;
+  }
+  .library-card h2 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  .library-info p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+  }
+  .library-info strong {
+    color: #0056b3;
+  }
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .library-container {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>College Libraries Information</h1>
+</header>
+
+<main aria-label="List of college libraries" class="library-container">
+  <!-- Libraries data will be dynamically loaded here -->
+</main>
+
+<script>
+  const librariesData = [
+    {
+      name: "Main Library",
+      booksAvailable: 25000,
+      openHours: "8:00 AM - 10:00 PM",
+      contactEmail: "mainlib@college.edu",
+      phone: "123-456-7890"
+    },
+    {
+      name: "Science Library",
+      booksAvailable: 12000,
+      openHours: "9:00 AM - 7:00 PM",
+      contactEmail: "scilib@college.edu",
+      phone: "123-456-7891"
+    },
+    {
+      name: "Arts Library",
+      booksAvailable: 8000,
+      openHours: "10:00 AM - 6:00 PM",
+      contactEmail: "artlib@college.edu",
+      phone: "123-456-7892"
+    },
+    {
+      name: "Digital Library",
+      booksAvailable: "Unlimited",
+      openHours: "24/7 Access",
+      contactEmail: "digitallib@college.edu",
+      phone: "123-456-7893"
+    }
+  ];
+
+  const mainContainer = document.querySelector('.library-container');
+
+  if (librariesData.length === 0) {
+    mainContainer.innerHTML = '<p>No library information available at this time.</p>';
+  } else {
+    librariesData.forEach(library => {
+      const card = document.createElement('section');
+      card.className = 'library-card';
+
+      card.innerHTML = `
+        <h2>${library.name}</h2>
+        <div class="library-info">
+          <p><strong>Books Available:</strong> ${library.booksAvailable}</p>
+          <p><strong>Opening Hours:</strong> ${library.openHours}</p>
+          <p><strong>Contact Email:</strong> <a href="mailto:${library.contactEmail}">${library.contactEmail}</a></p>
+          <p><strong>Phone:</strong> ${library.phone}</p>
+        </div>
+      `;
+      mainContainer.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>

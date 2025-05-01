@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aditiya University - Welcome</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  .overlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background-color: rgba(0,0,50,0.6);
+    z-index: -1;
+  }
+  header {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0,0,70,0.8);
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  main h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  main p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .cta-button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  .cta-button:hover {
+    background-color: #002f66;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0,0,70,0.8);
+    font-size: 0.9rem;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    main h2 {
+      font-size: 1.5rem;
+    }
+    main p {
+      font-size: 1rem;
+    }
+    .cta-button {
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <h1>Aditiya University</h1>
+  </header>
+  <main>
+    <h2>Welcome to Your Future</h2>
+    <p>Join Aditiya University where innovation meets excellence. Explore diverse programs, vibrant campus life, and endless opportunities for your success.</p>
+    <button class="cta-button" onclick="location.href='login.html'">Get Started</button>
+  </main>
+  <footer>
+    &copy; 2024 Aditiya University. All rights reserved.
+  </footer>
+</body>
+</html>
